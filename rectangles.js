@@ -32,15 +32,27 @@
 		for (var i = 0; i < count; i++) {
 			var rect = document.createElement("div");
 			rect.className = "rectangle";
+			document.getElementById("rectanglearea").appendChild(rect);
 		}
-		document.getElementById("rectanglearea").appendChild(rect);
 	}
 
    	// Randomly color all of the rectangles
     function colorIt() {
-    	// your code goes here
-    	//you might find the following code snippts useful
-    	//var r = Math.floor(Math.random() * 256);
+			var letters = "123456789ABCDEF";
+			var count = document.getElementById("count").value;
+
+			for (var i = 0; i < count; i++) {
+				var r = Math.floor(Math.random() * 256).toString();
+				var g = Math.floor(Math.random() * 256).toString();
+				var b = Math.floor(Math.random() * 256).toString();
+				var a = Math.random().toString();
+
+				var color = "rgba(${r}, ${g}, ${b}, ${a})";
+
+				var c = document.getElementById("rectanglearea").childNodes;
+
+				c[i].style.backgroundColor = color;
+			}
     }
 
 	// Randomly position all the rectangles
