@@ -29,8 +29,11 @@
 	function createRectangles() {
 		document.getElementById("rectanglearea").innerHTML = "";
 		var count = document.getElementById("count").value;
-		// finish the functions here
-
+		for (var i = 0; i < count; i++) {
+			var rect = document.createElement("div");
+			rect.className = "rectangle";
+		}
+		document.getElementById("rectanglearea").appendChild(rect);
 	}
 
    	// Randomly color all of the rectangles
@@ -40,19 +43,22 @@
     	//var r = Math.floor(Math.random() * 256);
     }
 
-    // // WARNING: incomplete
 	// Randomly position all the rectangles
 	function moveIt() {
 		var rects = document.querySelectorAll("#rectanglearea .rectangle");
 		var area = document.getElementById("rectanglearea");
 		for(var i = 0; i < rects.length; i++) {
-
+			var maxHeight = parseInt(window.getComputedStyle(area).height) - parseInt(window.getComputedStyle(rects[i]).height);
+			var maxWidth = parseInt(window.getComputedStyle(area).width) - parseInt(window.getComputedStyle(rects[i]).width);
+			rects[i].classList.add("movable");
+			rects[i].style.top = Math.floor(Math.random() * maxHeight + 1) + "px";
+			rects[i].style.left = Math.floor(Math.random() * maxWidth + 1) + "px";
 		}
 	}
 
 	function init() {
-			id("animate-btn").addEventListener("click", animateText);
-			id("reset-btn").addEventListener("click", reset);
+		id("animate-btn").addEventListener("click", animateText);
+		id("reset-btn").addEventListener("click", reset);
 	}
 
 	function animateText() {
