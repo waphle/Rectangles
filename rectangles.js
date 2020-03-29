@@ -11,14 +11,14 @@
 	"use strict";
 
 	window.onload = function() {
+		var numSelect = document.getElementById("count");
+		numSelect.onchange = createRectangles;
+
 		var colorButton = document.getElementById("color");
 		colorButton.onclick = colorIt;
 
 		var moveButton = document.getElementById("move");
 		moveButton.onclick = moveIt;
-
-		var numSelect = document.getElementById("count");
-		numSelect.onchange = createRectangles;
 
 		createRectangles();
 		colorIt();
@@ -29,6 +29,7 @@
 	function createRectangles() {
 		document.getElementById("rectanglearea").innerHTML = "";
 		var count = document.getElementById("count").value;
+
 		for (var i = 0; i < count; i++) {
 			var rect = document.createElement("div");
 			rect.className = "rectangle";
@@ -36,30 +37,29 @@
 		}
 	}
 
-   	// Randomly color all of the rectangles
-    function colorIt() {
-			var letters = "123456789ABCDEF";
-			var count = document.getElementById("count").value;
+  // Randomly color all of the rectangles
+  function colorIt() {
+		var count = document.getElementById("color").value;
 
-			for (var i = 0; i < count; i++) {
-				var r = Math.floor(Math.random() * 256).toString();
-				var g = Math.floor(Math.random() * 256).toString();
-				var b = Math.floor(Math.random() * 256).toString();
-				var a = Math.random().toString();
+		for (var i = 0; i < count; i++) {
+			var r = Math.floor(Math.random() * 256).toString();
+			var g = Math.floor(Math.random() * 256).toString();
+			var b = Math.floor(Math.random() * 256).toString();
+			var a = Math.random().toString();
 
-				var color = "rgba(${r}, ${g}, ${b}, ${a})";
+			var color = "rgba(${r}, ${g}, ${b}, ${a})";
+			var c = document.getElementById("rectanglearea").childNodes;
+			document.getElementById("rectanglearea").appendChild(rect);
 
-				var c = document.getElementById("rectanglearea").childNodes;
-
-				c[i].style.backgroundColor = color;
-			}
-    }
+			c[i].style.backgroundColor = color;
+		}
+  }
 
 	// Randomly position all the rectangles
 	function moveIt() {
 		var rects = document.querySelectorAll("#rectanglearea .rectangle");
 		var area = document.getElementById("rectanglearea");
-		for(var i = 0; i < rects.length; i++) {
+		for (var i = 0; i < rects.length; i++) {
 			var maxHeight = parseInt(window.getComputedStyle(area).height) - parseInt(window.getComputedStyle(rects[i]).height);
 			var maxWidth = parseInt(window.getComputedStyle(area).width) - parseInt(window.getComputedStyle(rects[i]).width);
 			rects[i].classList.add("movable");
@@ -93,6 +93,5 @@
 		id("input-text").value = "";
 		id("input-text").disabled = false;
 	}
-
 
 })();
