@@ -1,12 +1,3 @@
-// color the rectangle and move them randomlyi
-// Today's goal :
-//   - rectangles randomly are colored when the color button is clicked
-//   - when the select is changed the number of rectangles changes to match it
-
-// in the next class we will make the move function work
-
-// here is a road map of the functions you need to implement.
-
 (function() {
 	"use strict";
 
