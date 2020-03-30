@@ -47,7 +47,7 @@
 			var b = Math.floor(Math.random() * 256).toString();
 			var a = Math.random().toString();
 
-			var color = "rgba(${r}, ${g}, ${b}, ${a})";
+			var color = "rgba($[r], $[g], $[b], $[a])";
 			var c = document.getElementById("rectanglearea").childNodes;
 			document.getElementById("rectanglearea").appendChild(rect);
 
