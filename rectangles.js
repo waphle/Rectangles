@@ -27,6 +27,7 @@
 
 	// creates the number of rectangles specified in the select.
 	function createRectangles() {
+		var outside = document.getElementById("rectanglearea");
 		document.getElementById("rectanglearea").innerHTML = "";
 		var count = document.getElementById("count").value;
 
@@ -37,9 +38,9 @@
 		}
 	}
 
-  // Randomly color all of the rectangles
+	// Randomly color all of the rectangles
   function colorIt() {
-		var count = document.getElementById("color").value;
+		var count = document.getElementById("count").value;
 
 		for (var i = 0; i < count; i++) {
 			var r = Math.floor(Math.random() * 256).toString();
@@ -47,11 +48,10 @@
 			var b = Math.floor(Math.random() * 256).toString();
 			var a = Math.random().toString();
 
-			var color = "rgba($[r], $[g], $[b], $[a])";
+			var color = `rgba(${r}, ${g}, ${b}, ${a})`;
 			var c = document.getElementById("rectanglearea").childNodes;
-			document.getElementById("rectanglearea").appendChild(rect);
-
 			c[i].style.backgroundColor = color;
+
 		}
   }
 
